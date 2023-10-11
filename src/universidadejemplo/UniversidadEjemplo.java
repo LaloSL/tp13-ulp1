@@ -1,4 +1,3 @@
-
 package universidadejemplo;
 
 import java.sql.*;
@@ -7,7 +6,7 @@ import javax.swing.JOptionPane;
 public class UniversidadEjemplo {
 
     public static void main(String[] args) {
-      
+
         try {
 
             //Cargo Driver de conexión:  
@@ -18,40 +17,71 @@ public class UniversidadEjemplo {
             String usuario = "root";
             String password = "";
             Connection conexion = DriverManager.getConnection(URL, usuario, password);
-            
-            
-            //Carga de Tabla empleado 
-            //String sql = "INSERT INTO alumno (dni,apellido,nombre,fechaNacimiento,estado)"
-               //     + "VALUES (12345671,'Veron','Juan','2001-01-22',1),(12345672,'Milito','Gabriel','2002-02-12',1),(12345673,'Perez','Juan','2001-03-12',1)";
 
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            int filas = ps.executeUpdate();
+//            Ejercicio 3: cargar 3 alumnos
+            String sql = "INSERT INTO alumno (dni,apellido,nombre,fechaNacimiento,estado)"
+                    + "VALUES (12345671,'Veron','Juan','2001-01-22',1),(12345672,'Milito','Gabriel','2002-02-12',1),(12345673,'Perez','Juan','2001-03-12',1)";
+
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+
+                JOptionPane.showMessageDialog(null, "Alumno Agregado");
+
+            }
+
+            //Ejercicio 4: Insertar Materias
+            String sql6 = "INSERT INTO materia (nombre, año, estado)"
+                    + "VALUES ('Ingles',2023,true)";
+            String sql7 = "INSERT INTO materia (nombre, año, estado)"
+                    + "VALUES ('Matematica',2023,true)";
+            String sql8 = "INSERT INTO materia (nombre, año, estado)"
+                    + "VALUES ('Lengua',2023,true)";
+            String sql9 = "INSERT INTO materia (nombre, año, estado)"
+                    + "VALUES ('Fisica',2023,true)";
+            String sql10 = "INSERT INTO materia (nombre, año, estado)"
+                    + "VALUES ('Quimica',2023,true)";
+            String sql11 = "INSERT INTO materia (nombre, año, estado)"
+                    + "VALUES ('Biología',2023,true)";
+            String sql12 = "INSERT INTO materia (nombre, año, estado)"
+                    + "VALUES ('Literatura',2023,true)";
+
+            PreparedStatement ps6 = conexion.prepareStatement(sql6);
+            ps6.executeUpdate();
+            PreparedStatement ps7 = conexion.prepareStatement(sql7);
+            ps7.executeUpdate();
+            PreparedStatement ps8 = conexion.prepareStatement(sql8);
+            ps8.executeUpdate();
+            PreparedStatement ps9 = conexion.prepareStatement(sql9);
+            ps9.executeUpdate();
+            PreparedStatement ps10 = conexion.prepareStatement(sql10);
+            ps10.executeUpdate();
+            PreparedStatement ps11 = conexion.prepareStatement(sql11);
+            ps11.executeUpdate();
+            PreparedStatement ps12 = conexion.prepareStatement(sql12);
+            ps12.executeUpdate();
+
+         
+
+
+////          Ejercicio 5: Inscribir a los 3 alumnos en 2 materias c/u
+                //ACA VA UN UPDATE
+//            String sql0= "INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)"
+//            + "VALUES (1,8,1,1)";
+//            String sql1= "INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)"
+//            +" VALUES (2,7,1,2)";
+//            String sql2= "INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)"
+//            +" VALUES (3,10,2,2)";
+//            String sql3= "INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)"
+//            +" VALUES (4,9,2,3)";
+//            String sql4= "INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)"
+//            +"VALUES (5,2,3,1)";
+//            String sql5= "INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)"
+//            +" VALUES (6,6,3,4)";
 //
-//            if (filas > 0) {
-//
-//                JOptionPane.showMessageDialog(null, "Alumno Agregado");
-//
-//            }
-            
-        
-          
-           
-            //Ejercicio 5 (NO SE CUAL ES EL ERROR, CREO Q ES ALGO DEL CATCH FALTA UN TRY
-//            String sql= “INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)”;
-//            +” VALUES (1,8,1,1)”;
-//            String sql1= “INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)”;
-//            +” VALUES (2,7,1,2)”;
-//            String sql2= “INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)”;
-//            +” VALUES (3,10,2,2)”;
-//            String sql3= “INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)”;
-//            +” VALUES (4,9,2,3)”;
-//            String sql4= “INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)”;
-//            +” VALUES (5,2,3,1)”;
-//            String sql5= “INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)”;
-//            +” VALUES (6,6,3,4)”;
-//
-//            PreparedStatement ps = conexion.prepareStatement(sql);
-//            ps.executeUpdate();
+//            PreparedStatement ps0 = conexion.prepareStatement(sql0);
+//            ps0.executeUpdate();
 //
 //            PreparedStatement ps1 = conexion.prepareStatement(sql1);
 //            ps1.executeUpdate();
@@ -63,10 +93,6 @@ public class UniversidadEjemplo {
 //            ps4.executeUpdate();
 //            PreparedStatement ps5 = conexion.prepareStatement(sql5);
 //            ps5.executeUpdate();
-
-            
-            
-
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar el Driver");
 
@@ -97,11 +123,6 @@ public class UniversidadEjemplo {
 //System.out.println("exito");
 }
 
-        
-        
-        
-        
-        
 //        try {
 //            //instancio un objeto de tipo driver
 //            Class.forName("org.mariadb.jdbc.Driver");
