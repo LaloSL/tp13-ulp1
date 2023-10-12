@@ -122,8 +122,10 @@ public class UniversidadEjemplo {
 //            }
               
 //              ejercicio 7: Desinscribir un alumno de una de la materias.
-
-                String sql23= "UPDATE alumno SET estado= 0 WHERE idAlumno=34";
+                  //borrado logico
+//                String sql23= "UPDATE alumno SET estado= 0 WHERE idAlumno=34";
+                //borrado fisico
+                String sql23="DELETE FROM alumno WHERE idAlumno=34";  
                 PreparedStatement ps23 = conexion.prepareStatement(sql23);
                 ps23.executeUpdate();
                 
