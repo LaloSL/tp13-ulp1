@@ -18,7 +18,7 @@ public class UniversidadEjemplo {
             String password = "";
             Connection conexion = DriverManager.getConnection(URL, usuario, password);
 
-//            Ejercicio 3: cargar 3 alumnos
+            //Ejercicio 3: cargar 3 alumnos
             String sql = "INSERT INTO alumno (dni,apellido,nombre,fechaNacimiento,estado)"
                     + "VALUES (12345671,'Veron','Juan','2001-01-22',1),(12345672,'Milito','Gabriel','2002-02-12',1),(12345673,'Perez','Juan','2001-03-12',1)";
 
@@ -62,11 +62,19 @@ public class UniversidadEjemplo {
             PreparedStatement ps12 = conexion.prepareStatement(sql12);
             ps12.executeUpdate();
 
-         
+            // Ejercicio 5: 
+            String sql22 = "SELECT DISTINCT alumno.*, materia.nombre FROM alumno"
+                    + "JOIN inscripcion ON (alumno.idAlumno = inscripcion.idAlumno) JOIN materia ON(materia.idMateria=inscripcion.idMateria)"
+                    + "WHERE inscripcion.nota > 8";
 
-
+            //String sql23 = "DELETE FROM inscripcion WHERE idAlumno = xx AND idMateria = xx";
+            //PreparedStatement ps23 = conexion.prepareStatement(sql23);
+//            int borrar = ps23.executeUpdate();
+//            if(borrar > 0){
+//               JOptionPane.showMessageDialog(null, "Registro Borrado");    
+//        }
 ////          Ejercicio 5: Inscribir a los 3 alumnos en 2 materias c/u
-                //ACA VA UN UPDATE
+            //ACA VA UN UPDATE
 //            String sql0= "INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)"
 //            + "VALUES (1,8,1,1)";
 //            String sql1= "INSERT INTO inscripcion(idInscripto, nota, idAlumno, idMateria)"
